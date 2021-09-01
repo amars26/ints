@@ -1,0 +1,21 @@
+close all
+
+[x,y]=meshgrid(0:0.1:4, 0:0.1:4); 
+c= 2.*pi; 
+z=1/2.*(-20.*exp(1).*(-0.20.*sqrt(1/2.*(x.^2+y.^2)))-exp(1).*(1/2.*(cos(c.*x)+cos(c.*y)))+20+exp(1)+5.7); 
+disp('Minimalna vrijednost rucno: ')
+b=min(min(z)); 
+[x,f]=ga(@(x) 1/2.*(-20.*exp(1).*(-0.20.*sqrt(1/2.*(x(1).^2+x(2).^2)))-exp(1).*(1/2.*(cos(c.*x(1))+cos(c.*x(2))))+20+exp(1)+5.7),2,[],[],[],[],[0 0],[4 4]);
+x
+x(1)
+x(2)
+disp('Minimalna vrijednost ga:')
+f
+figure
+
+surf(z)
+colormap summer
+xlabel('X')
+ylabel('Y')
+zlabel('Z')
+text(x(1),x(2),f,'\leftarrow Minimalna Vrijednost', 'FontSize',10,'Color','red','linewidth',2.5);
